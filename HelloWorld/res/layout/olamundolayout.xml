@@ -1,0 +1,38 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <!-- Continua... -->
+    
+    <EditText
+        android:id="@+id/edNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nome">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btExibir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/clique" />
+
+    <!-- Outros componentes aqui... -->
+    
+    <Button
+        android:id="@+id/btModal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/modal" />
+
+</LinearLayout>
