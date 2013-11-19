@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CadastroAluno</string>
+    <string name="action_settings">Settings</string>
+    <string name="nome_aluno">Informe o nome do aluno</string>
+    <string name="add_aluno">Adicionar aluno</string>
+
+    <string name="titulo_formulario">Dados do Aluno</string>
+    <string name="foto_aluno">Foto do Aluno</string>
+    <string name="nome">Nome</string>
+    
+    <string name="telefone">Telefone</string>
+    <string name="telefone_hint">Informe o telefone</string>
+    
+    <string name="site">Site</string>
+    <string name="site_hint">Informe o Site</string>
+    
+    <string name="email">E-mail</string>
+    <string name="email_hint">exemplo@gmail.com</string>
+    
+    <string name="endereco">Endereço</string>
+    <string name="endereco_hint">Informe o endereço</string>
+    
+    <string name="nota">Nota</string>
+    
+    <string name="salvar_dados">Salvar Dados</string>
+</resources>

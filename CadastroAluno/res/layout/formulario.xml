@@ -1,0 +1,108 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" 
+            android:src="@drawable/ic_no_image" 
+            android:contentDescription="@string/foto_aluno"/>
+
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nome" />
+
+        <EditText
+            android:id="@+id/edNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nome_aluno">
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/tvFone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefone" />
+
+        <EditText
+            android:id="@+id/edFone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone" 
+            android:hint="@string/telefone_hint"/>
+
+        <TextView
+            android:id="@+id/tvSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/site" />
+
+        <EditText
+            android:id="@+id/edSite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/site_hint"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email" />
+
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress" 
+            android:hint="@string/email_hint"/>
+
+        <TextView
+            android:id="@+id/tvEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/endereco" />
+
+        <EditText
+            android:id="@+id/edEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress" 
+            android:hint="@string/endereco_hint"/>
+
+        <TextView
+            android:id="@+id/tvNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nota" />
+
+        <SeekBar
+            android:id="@+id/sbNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:max="10"/>
+
+        <Button
+            android:id="@+id/sbSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/salvar_dados" />
+        
+    </LinearLayout>
+
+</ScrollView>
