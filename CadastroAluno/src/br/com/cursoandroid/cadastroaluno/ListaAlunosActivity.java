@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -19,16 +21,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class ListaAlunosActivity extends Activity {
-	
-	//Definicao de constantes
+
+	// Definicao de constantes
 	private final String TAG = "CADASTRO_ALUNO";
 	private final String ALUNOS_KEY = "LISTA";
-	
+
 	// Atributos de tela
 	private EditText edNome;
 	private Button botao;
 	private ListView lvListagem;
-	
+
 	// Colecao de Alunos a ser exibida na tela
 	private List<String> listaAlunos;
 
@@ -36,24 +38,24 @@ public class ListaAlunosActivity extends Activity {
 	private ArrayAdapter<String> adapter;
 	// Definicao do layout de exibicao da listagem
 	private int adapterLayout = android.R.layout.simple_list_item_1;
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		//Inclusao da lista de alunos no objeto Bundle.Map
+		// Inclusao da lista de alunos no objeto Bundle.Map
 		outState.putStringArrayList(ALUNOS_KEY, (ArrayList<String>) listaAlunos);
-		//Persistencia do do objeto Bundle
+		// Persistencia do do objeto Bundle
 		super.onSaveInstanceState(outState);
-		//Lancamento de mensagem de log
+		// Lancamento de mensagem de log
 		Log.i(TAG, "onSaveInstanceState(): " + listaAlunos);
 	}
-	
+
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		//Recuperao o estado do objeto Bundle
+		// Recuperao o estado do objeto Bundle
 		super.onRestoreInstanceState(savedInstanceState);
-		//Carrega lista de alunos do Bundle.Map
+		// Carrega lista de alunos do Bundle.Map
 		listaAlunos = savedInstanceState.getStringArrayList(ALUNOS_KEY);
-		//Lancamento de mensagem de log
+		// Lancamento de mensagem de log
 		Log.i(TAG, "onSaveRestoreState(): " + listaAlunos);
 	}
 
@@ -66,20 +68,20 @@ public class ListaAlunosActivity extends Activity {
 		edNome = (EditText) findViewById(R.id.edNomeListagem);
 		botao = (Button) findViewById(R.id.btAddListagem);
 		lvListagem = (ListView) findViewById(R.id.lvListagem);
-		
-		//Lancando mensagens de LOG no Logcat
+
+		// Lancando mensagens de LOG no Logcat
 		Log.i(TAG, "Execucao do metodo onCreate()");
-		
-		//Verificando se ha uma lista de alunos salva no Bundle
+
+		// Verificando se ha uma lista de alunos salva no Bundle
 		if (savedInstanceState != null) {
-			//Carregar lista de allunos do Bundle
+			// Carregar lista de allunos do Bundle
 			listaAlunos = savedInstanceState.getStringArrayList(ALUNOS_KEY);
 		}
-		if(listaAlunos == null){
+		if (listaAlunos == null) {
 			// Inicializacao da Colecao de Alunos
 			listaAlunos = new ArrayList<String>();
 		}
-		
+
 		// O objeto ArrayAdapter sabe converter listas ou vetores em View
 		adapter = new ArrayAdapter<String>(this, adapterLayout, listaAlunos);
 		// Associacao do Adapter aa ListView
@@ -124,9 +126,28 @@ public class ListaAlunosActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.lista_alunos, menu);
+		// Definicao do objeto Inflater
+		MenuInflater inflater = this.getMenuInflater();
+
+		// Inflar um XML em um Menu vazio
+		inflater.inflate(R.menu.menu_principal, menu);
+
+		// Exibir o menu
 		return true;
 	}
-	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Verifica o item do menu selecionado
+		switch (item.getItemId()) {
+			//Verifica se foi selecionado o item NOVO
+			case R.id.menu_novo:
+				Toast.makeText(ListaAlunosActivity.this, "Você clicou em NOVO",
+						Toast.LENGTH_LONG).show();
+				return false;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+
 }

@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CadastroAluno</string>
+    
+    <!-- Nome da APP, usado pelo AndroidManifest -->
+    <string name="app_name">MPAlunos</string>
+    
+    <!-- Strings para itens do menu -->
+    <string name="novo">Novo</string>
+    <string name="mapa">Mapa</string>
+    <string name="mais_opcoes">Mais opções</string>
+    <string name="sincronizar">Sincronizar</string>
+    <string name="provas">Provas</string>
+    <string name="preferencias">Preferências</string>
+    
+    <!-- Outras strings aqui... -->
+    
     <string name="action_settings">Settings</string>
     <string name="nome_aluno">Informe o nome do aluno</string>
     <string name="add_aluno">Adicionar aluno</string>
-
+    
     <string name="titulo_formulario">Dados do Aluno</string>
     <string name="foto_aluno">Foto do Aluno</string>
     <string name="nome">Nome</string>
