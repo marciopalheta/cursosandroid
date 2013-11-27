@@ -7,6 +7,10 @@ import br.com.cursoandroid.cadastroaluno.FormularioActivity;
 import br.com.cursoandroid.cadastroaluno.R;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 
+/**
+ * @author marciopalheta
+ *
+ */
 public class FormularioHelper {
 	
 	private EditText nome;
@@ -55,5 +59,21 @@ public class FormularioHelper {
 		aluno.setNota(Double.valueOf(nota.getProgress()));
 
 		return aluno;
+	}
+	
+	/**
+	 * Metodo que carrega os dados do aluno na tela 
+	 * @param aluno
+	 */
+	public void setAluno(Aluno aluno){
+		
+		nome.setText(aluno.getNome());
+		telefone.setText(aluno.getTelefone());
+		endereco.setText(aluno.getEndereco());
+		site.setText(aluno.getSite());
+		email.setText(aluno.getEmail());
+		nota.setProgress(aluno.getNota().intValue());
+		
+		this.aluno = aluno;
 	}
 }

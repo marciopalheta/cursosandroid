@@ -20,7 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 import br.com.cursoandroid.cadastroaluno.modelo.dao.AlunoDAO;
 
@@ -91,9 +90,14 @@ public class ListaAlunosActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapter, View view,
 					int posicao, long id) {
 
-				Toast.makeText(ListaAlunosActivity.this,
-						"Aluno: " + listaAlunos.get(posicao), Toast.LENGTH_LONG)
-						.show();
+				Intent form = new Intent(ListaAlunosActivity.this,
+						FormularioActivity.class);
+				
+				alunoSelecionado = (Aluno)lvListagem.getItemAtPosition(posicao);
+				
+				form.putExtra("ALUNO_SELECIONADO", alunoSelecionado);
+				
+				startActivity(form);
 			}
 		});
 
@@ -190,7 +194,7 @@ public class ListaAlunosActivity extends Activity {
 				alunoSelecionado = null;
 			}
 		});
-		
+
 		builder.setNegativeButton("Não", null);
 		AlertDialog dialog = builder.create();
 		dialog.setTitle("Confirmação de operação");

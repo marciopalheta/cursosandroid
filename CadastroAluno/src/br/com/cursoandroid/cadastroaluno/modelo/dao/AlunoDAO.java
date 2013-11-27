@@ -93,16 +93,34 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		Log.i(TAG, "Aluno cadastrado: " + aluno.getNome());
 	}
 
+	public void alterar(Aluno aluno) {
+		ContentValues values = new ContentValues();
+		values.put("nome", aluno.getNome());
+		values.put("telefone", aluno.getTelefone());
+		values.put("endereco", aluno.getEndereco());
+		values.put("site", aluno.getSite());
+		values.put("email", aluno.getEmail());
+		values.put("foto", aluno.getFoto());
+		values.put("nota", aluno.getNota());
+
+		// Colecao de valores de parametros do SQL
+		String[] args = { aluno.getId().toString() };
+
+		// Altera dados do Aluno no BD
+		getWritableDatabase().update(TABELA, values, "id=?", args);
+		Log.i(TAG, "Aluno alterado: " + aluno.getNome());
+	}
+
 	public List<Aluno> listar() {
 		// Definicao da colecao de alunos
 		List<Aluno> lista = new ArrayList<Aluno>();
-		
+
 		// Definicao da instrucao SQL
 		String sql = "Select * from Aluno order by nome";
-		
+
 		// Objeto que recebe os registros do banco de dados
 		Cursor cursor = getReadableDatabase().rawQuery(sql, null);
-		
+
 		try {
 			while (cursor.moveToNext()) {
 				// Criacao de nova referencia para Aluno
@@ -126,19 +144,21 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		}
 		return lista;
 	}
-	
+
 	/**
 	 * Metodo responsavel pela exclusao de um Aluno do BD
-	 * @param aluno a ser excluido
+	 * 
+	 * @param aluno
+	 *            a ser excluido
 	 */
-	public void deletar(Aluno aluno){
-		//Definicao de array de parametros
-		String[] args = {aluno.getId().toString()};
-		
-		//Exclusao do Aluno
+	public void deletar(Aluno aluno) {
+		// Definicao de array de parametros
+		String[] args = { aluno.getId().toString() };
+
+		// Exclusao do Aluno
 		getWritableDatabase().delete(TABELA, "id=?", args);
-		
-		Log.i(TAG, "Aluno deletado: "+aluno.getNome());
+
+		Log.i(TAG, "Aluno deletado: " + aluno.getNome());
 	}
 
 }

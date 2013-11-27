@@ -14,6 +14,8 @@ public class FormularioActivity extends Activity {
 	private Button botao;
 	private FormularioHelper helper;
 
+	private Aluno alunoParaSerAlterado = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,19 +23,33 @@ public class FormularioActivity extends Activity {
 		// Criacao do objeto Helper
 		helper = new FormularioHelper(this);
 		botao = (Button) findViewById(R.id.sbSalvar);
+
+		// Busca o aluno a ser alterado
+		alunoParaSerAlterado = (Aluno) getIntent().getSerializableExtra(
+				"ALUNO_SELECIONADO");
+		
+		if(alunoParaSerAlterado!=null){
+			//Atualiza a tela com dados do Aluno
+			helper.setAluno(alunoParaSerAlterado);
+		} 
+
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				// Utilizacao do Helper para recuperar dados do Aluno
 				Aluno aluno = helper.getAluno();
-
 				// Criacao do objeto DAO - inicio da conexao com o BD
 				AlunoDAO dao = new AlunoDAO(FormularioActivity.this);
-				// Chamada do metodo de cadastro do Aluno
-				dao.cadastrar(aluno);
+
+				//Verificacao para salvar ou cadastrar o aluno
+				if(aluno.getId()==null){
+					dao.cadastrar(aluno);
+				}else{
+					dao.alterar(aluno);
+				}
+				
 				// Encerramento da conexao com o Banco de Dados
 				dao.close();
-
 				// Encerrando a Activity
 				finish();
 			}
