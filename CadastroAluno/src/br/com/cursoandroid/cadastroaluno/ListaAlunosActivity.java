@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -92,11 +93,12 @@ public class ListaAlunosActivity extends Activity {
 
 				Intent form = new Intent(ListaAlunosActivity.this,
 						FormularioActivity.class);
-				
-				alunoSelecionado = (Aluno)lvListagem.getItemAtPosition(posicao);
-				
+
+				alunoSelecionado = (Aluno) lvListagem
+						.getItemAtPosition(posicao);
+
 				form.putExtra("ALUNO_SELECIONADO", alunoSelecionado);
-				
+
 				startActivity(form);
 			}
 		});
@@ -146,13 +148,9 @@ public class ListaAlunosActivity extends Activity {
 		switch (item.getItemId()) {
 		// Verifica se foi selecionado o item NOVO
 		case R.id.menu_novo:
-
-			// Criacao do especialista em mudanca de telas
 			Intent intent = new Intent(ListaAlunosActivity.this,
 					FormularioActivity.class);
-			// Carregar nova tela
 			startActivity(intent);
-
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -169,9 +167,43 @@ public class ListaAlunosActivity extends Activity {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
+		Intent intent;
 		switch (item.getItemId()) {
 		case R.id.menuDeletar:
 			excluirAluno();
+			break;
+		case R.id.menuLigar:
+			intent = new Intent(Intent.ACTION_CALL);
+			intent.setData(Uri.parse("tel:" + alunoSelecionado.getTelefone()));
+			startActivity(intent);
+			break;
+		case R.id.menuEnviarSMS:
+			intent = new Intent(Intent.ACTION_VIEW);
+			intent.setData(Uri.parse("sms:" + alunoSelecionado.getTelefone()));
+			intent.putExtra("sms_body", "Mensagem de boas vindas :-)");
+			startActivity(intent);
+			break;
+		//Outras opcoes aqui...
+		case R.id.menuAcharNoMapa:
+			intent = new Intent(Intent.ACTION_VIEW);
+			intent.setData(Uri.parse("geo:0,0?z=14&q="
+					+ alunoSelecionado.getEndereco()));
+			intent.putExtra("sms_body", "Mensagem de boas vindas :-)");
+			startActivity(intent);
+			break;
+		case R.id.menuNavegar:
+			intent = new Intent(Intent.ACTION_VIEW);
+			intent.setData(Uri.parse("http:" + alunoSelecionado.getSite()));
+			startActivity(intent);
+			break;// continua...
+		case R.id.menuEnviarEmail:
+			intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("message/rfc822");
+			intent.putExtra(Intent.EXTRA_EMAIL,
+					new String[] { alunoSelecionado.getEmail() });
+			intent.putExtra(Intent.EXTRA_SUBJECT, "Falando sobre o curso");
+			intent.putExtra(Intent.EXTRA_TEXT, "O curso foi muito legal");
+			startActivity(intent);
 			break;
 		default:
 			break;
