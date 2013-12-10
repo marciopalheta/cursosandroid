@@ -2,7 +2,6 @@ package br.com.cursoandroid.cadastroaluno.helper;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
