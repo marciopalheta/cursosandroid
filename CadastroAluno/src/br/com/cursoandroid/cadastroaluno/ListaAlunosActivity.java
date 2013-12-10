@@ -19,8 +19,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import br.com.cursoandroid.cadastroaluno.adapter.ListaAlunoAdapter;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 import br.com.cursoandroid.cadastroaluno.modelo.dao.AlunoDAO;
 
@@ -38,11 +38,8 @@ public class ListaAlunosActivity extends Activity {
 	// Colecao de Alunos a ser exibida na tela
 	private List<Aluno> listaAlunos;
 
-	// O ArrayAdapter sabe converter listas ou vetores em View
-	private ArrayAdapter<Aluno> adapter;
-
-	// Definicao do layout de exibicao da listagem
-	private int adapterLayout = android.R.layout.simple_list_item_1;
+	// Adapter customizado
+	private ListaAlunoAdapter adapter;
 
 	// Aluno selecionado no click longo da ListView
 	private Aluno alunoSelecionado = null;
@@ -117,8 +114,9 @@ public class ListaAlunosActivity extends Activity {
 		// Fim da conexao com BD
 		dao.close();
 
-		// O objeto ArrayAdapter sabe converter listas ou vetores em View
-		this.adapter = new ArrayAdapter<Aluno>(this, adapterLayout, listaAlunos);
+		// O objeto ListaAlunoAdapter sabe converter listas de alunos em View
+		this.adapter = new ListaAlunoAdapter(this, listaAlunos);
+		
 		// Associacao do Adapter aa ListView
 		this.lvListagem.setAdapter(adapter);
 	}

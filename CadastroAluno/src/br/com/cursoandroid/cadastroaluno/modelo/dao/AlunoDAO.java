@@ -161,4 +161,26 @@ public class AlunoDAO extends SQLiteOpenHelper {
 		Log.i(TAG, "Aluno deletado: " + aluno.getNome());
 	}
 
+	/**
+	 * Metodo que verifica se um numero de telefone pertence a um aluno
+	 * @param telefone
+	 * @return true, se o telefone pertence a um aluno
+	 */
+	public boolean isAluno(String telefone) {
+		String sql = "select * from " + TABELA + " where telefone = ?";
+		String[] valores = { telefone };
+		Cursor cursor = null;
+		try {
+			//Abertura da conexao com BD e execucao da consulta
+			cursor = getReadableDatabase().rawQuery(sql, valores);
+			//Retorna true, se for devolvida alguma linha
+			return cursor.getCount() > 0;
+		} catch (SQLException e) {
+			Log.e(TAG, e.getMessage());
+			return false;
+		} finally {
+			cursor.close();
+		}
+	}
+
 }
