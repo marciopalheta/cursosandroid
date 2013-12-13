@@ -20,9 +20,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import br.com.cursoandroid.cadastroaluno.adapter.ListaAlunoAdapter;
+import br.com.cursoandroid.cadastroaluno.converter.AlunoConverter;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 import br.com.cursoandroid.cadastroaluno.modelo.dao.AlunoDAO;
+import br.com.cursoandroid.cadastroaluno.suport.WebClient;
 import br.com.cursoandroid.cadastroaluno.task.EnviaAlunosTask;
 
 public class ListaAlunosActivity extends Activity {
@@ -152,18 +155,10 @@ public class ListaAlunosActivity extends Activity {
 					FormularioActivity.class);
 			startActivity(intent);
 			return false;
-			// Verifica se foi selecionado o item ENVIAR ALUNOS
+		// Verifica se foi selecionado o item ENVIAR ALUNOS
 		case R.id.menu_enviar_alunos:
-			/*AlunoDAO dao = new AlunoDAO(this);
-			List<Aluno> lista = dao.listar();
-			dao.close();
-			String json = new AlunoConverter().toJSON(lista);
-			//Toast.makeText(this, json, Toast.LENGTH_LONG).show();
-			Log.i(TAG, json);
-			WebClient client = new WebClient("http://www.caelum.com.br/mobile");
-			String resposta = client.post(json);
-			Toast.makeText(this, resposta, Toast.LENGTH_LONG).show();*/
 			
+			//Execucao de tarefa assincrona
 			new EnviaAlunosTask(this).execute();
 			
 			return false;

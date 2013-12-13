@@ -13,7 +13,8 @@ import br.com.cursoandroid.cadastroaluno.suport.WebClient;
 
 public class EnviaAlunosTask extends AsyncTask<Object, Object, String> {
 
-	// URL que serah chamada - http://ip.jsontest.com/
+	//Servidor para teste JSON: http://www.jsontest.com/
+	//private final String url = "http://ip.jsontest.com/";
 	private final String url = "http://192.168.1.105:8080/AlunoWeb/receber-json";
 
 	// Contexto (tela) para exibicao de mensagens
@@ -22,47 +23,32 @@ public class EnviaAlunosTask extends AsyncTask<Object, Object, String> {
 	// Barra de progresso
 	private ProgressDialog progress;
 	
+	//Construtor que recebe o contexto da App
 	public EnviaAlunosTask(Context context) {
 		this.context = context;
 	}
 
-	/*
-	 * Metodo executado antes de iniciar o servico
-	 * 
-	 * @see android.os.AsyncTask#onPreExecute()
-	 */
-	@Override
 	protected void onPreExecute() {
+		//Executando a barra de progresso
 		progress = ProgressDialog.show(context, "Aguarde...",
 				"Enviando dados para o servidor web", true, true);
 	}
-
-	/*
-	 * Metodo executa em outra Thread, diferente da UIThread
-	 * 
-	 * @see android.os.AsyncTask#doInBackground(Params[])
-	 */
-	@Override
 	protected String doInBackground(Object... params) {
+		//Lista de alunos
 		AlunoDAO dao = new AlunoDAO(context);
 		List<Aluno> lista = dao.listar();
 		dao.close();
-
+		//Conversao da lista para JSON
 		String json = new AlunoConverter().toJSON(lista);
-
+		//Envio de dados para o servidor remoto
 		String jsonResposta = new WebClient(url).post(json);
-
+		//Devolvendo a resposta do servidor
 		return jsonResposta;
 	}
-
-	/*
-	 * Metodo executado pela UIThread
-	 * 
-	 * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
-	 */
-	@Override
 	protected void onPostExecute(String result) {
+		//Encerra a exibicao da barra de progresso
 		progress.dismiss();
+		//Exibindo a resposta do servidor
 		Toast.makeText(context, result, Toast.LENGTH_LONG).show();
 	}
 
