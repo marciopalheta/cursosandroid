@@ -23,6 +23,7 @@ import android.widget.ListView;
 import br.com.cursoandroid.cadastroaluno.adapter.ListaAlunoAdapter;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 import br.com.cursoandroid.cadastroaluno.modelo.dao.AlunoDAO;
+import br.com.cursoandroid.cadastroaluno.task.EnviaAlunosTask;
 
 public class ListaAlunosActivity extends Activity {
 
@@ -116,7 +117,7 @@ public class ListaAlunosActivity extends Activity {
 
 		// O objeto ListaAlunoAdapter sabe converter listas de alunos em View
 		this.adapter = new ListaAlunoAdapter(this, listaAlunos);
-		
+
 		// Associacao do Adapter aa ListView
 		this.lvListagem.setAdapter(adapter);
 	}
@@ -142,13 +143,29 @@ public class ListaAlunosActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent = null;
 		// Verifica o item do menu selecionado
 		switch (item.getItemId()) {
 		// Verifica se foi selecionado o item NOVO
 		case R.id.menu_novo:
-			Intent intent = new Intent(ListaAlunosActivity.this,
+			intent = new Intent(ListaAlunosActivity.this,
 					FormularioActivity.class);
 			startActivity(intent);
+			return false;
+			// Verifica se foi selecionado o item ENVIAR ALUNOS
+		case R.id.menu_enviar_alunos:
+			/*AlunoDAO dao = new AlunoDAO(this);
+			List<Aluno> lista = dao.listar();
+			dao.close();
+			String json = new AlunoConverter().toJSON(lista);
+			//Toast.makeText(this, json, Toast.LENGTH_LONG).show();
+			Log.i(TAG, json);
+			WebClient client = new WebClient("http://www.caelum.com.br/mobile");
+			String resposta = client.post(json);
+			Toast.makeText(this, resposta, Toast.LENGTH_LONG).show();*/
+			
+			new EnviaAlunosTask(this).execute();
+			
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -181,7 +198,7 @@ public class ListaAlunosActivity extends Activity {
 			intent.putExtra("sms_body", "Mensagem de boas vindas :-)");
 			startActivity(intent);
 			break;
-		//Outras opcoes aqui...
+		// Outras opcoes aqui...
 		case R.id.menuAcharNoMapa:
 			intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse("geo:0,0?z=14&q="

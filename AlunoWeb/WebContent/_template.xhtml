@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<style type="text/css">
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 95% !important;
+}
+</style>
+
+<f:view contentType="text/html" />
+<h:head>
+	<title><ui:insert name="titulo" />
+	</title>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit id="top" position="north">
+		</p:layoutUnit>
+
+		<p:layoutUnit id="bottom" position="south" size="40">
+			<h:outputText value="Rodape" />
+		</p:layoutUnit>
+
+		<p:layoutUnit id="center" position="center">
+
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

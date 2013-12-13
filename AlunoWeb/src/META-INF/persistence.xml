@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="alunoweb" transaction-type="JTA">
+		<!-- Provider de JPA -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- Nome do Datasource que foi definido no GlassFish -->
+		<jta-data-source>MySQL_JNDI_android_academico</jta-data-source>
+		<!-- Faz com que o servidor JEE procure anotacoes em classes JavaBean -->
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.current_session_context_class" value="jta" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.SunONETransactionManagerLookup" />
+		</properties>
+	</persistence-unit>
+</persistence>

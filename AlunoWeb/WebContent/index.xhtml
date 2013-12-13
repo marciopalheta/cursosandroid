@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="_template.xhtml">
+		<ui:define name="titulo">Listagem de clientes</ui:define>
+		<ui:define name="conteudo">
+			<f:event listener="#{clienteMB.iniciarConversa}" type="preRenderView" />
+			<h:form id="frmCliente">
+
+				<p:growl id="growl" showDetail="true" />
+
+				<!-- p:fieldset legend="#{msg.label_lista_clientes}" -->
+				<p:panel header="Lista de Clientes">
+
+					<p:outputPanel>
+						<p:inputText value="#{clienteMB.valorFiltro}" />
+						<p:commandButton id="btBuscar" value="Consultar" title="Consultar"
+							icon="ui-icon-search" actionListener="#{clienteMB.filtrar}"
+							update=":frmCliente:dataTable" />
+						<p:commandButton id="btExcluir" value="Limpar base"
+							title="Apagar todos os registros" icon="ui-icon-search"
+							actionListener="#{clienteMB.excluirTodos}"
+							update=":frmCliente:dataTable" />
+					</p:outputPanel>
+
+					<p:spacer />
+
+
+					<p:dataTable id="dataTable" var="entidade"
+						value="#{clienteMB.listaEntidadesPaginada}" paginator="true"
+						rows="50" widgetVar="wdDataTable"
+						paginatorTemplate="#{clienteMB.listaEntidadesPaginada.rowCount} #{msg.label_tot_registros} {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="50,75,100" resizableColumns="true"
+						liveResize="true" rowKey="#{entidade.id}" selectionMode="single"
+						lazy="true" emptyMessage="Lista vazia"
+						selection="#{clienteMB.entidade}" paginatorPosition="bottom">
+
+						<p:column headerText="ID" style="width:10%">
+						#{entidade.id}
+						</p:column>
+
+						<p:column headerText="Nome" sortBy="#{entidade.nome}">
+							<h:outputText value="#{entidade.nome}" />
+						</p:column>
+
+						<p:column headerText="Telefone" sortBy="#{entidade.telefone}">
+							<h:outputText value="#{entidade.telefone}" />
+						</p:column>
+
+						<p:column headerText="Email" sortBy="#{entidade.email}">
+						#{entidade.email}
+						</p:column>
+
+					</p:dataTable>
+					<!-- /p:fieldset-->
+				</p:panel>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
