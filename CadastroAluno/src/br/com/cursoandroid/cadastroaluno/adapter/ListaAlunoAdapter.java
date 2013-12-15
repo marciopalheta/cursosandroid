@@ -53,7 +53,7 @@ public class ListaAlunoAdapter extends BaseAdapter {
 		} else {
 			view.setBackgroundColor(activity.getResources().getColor(
 					R.color.linha_impar));
-		} // continua...
+		}
 
 		// Configuracao do nome
 		TextView nome = (TextView) view.findViewById(R.id.itemNome);
@@ -70,6 +70,18 @@ public class ListaAlunoAdapter extends BaseAdapter {
 		bmp = Bitmap.createScaledBitmap(bmp, 100, 100, true);
 		ImageView foto = (ImageView) view.findViewById(R.id.itemFoto);
 		foto.setImageBitmap(bmp);
+		
+		//Carregar o telefone
+		TextView telefone = (TextView)view.findViewById(R.id.itemTelefone);
+		if(telefone!=null){
+			telefone.setText(aluno.getTelefone());
+		}
+		
+		//Carregar o site
+		TextView email = (TextView)view.findViewById(R.id.itemEmail);
+		if(email!=null){
+			email.setText(aluno.getEmail());
+		}
 
 		return view;
 	}

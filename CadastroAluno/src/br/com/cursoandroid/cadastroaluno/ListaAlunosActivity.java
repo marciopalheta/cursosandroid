@@ -20,12 +20,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 import br.com.cursoandroid.cadastroaluno.adapter.ListaAlunoAdapter;
-import br.com.cursoandroid.cadastroaluno.converter.AlunoConverter;
 import br.com.cursoandroid.cadastroaluno.modelo.bean.Aluno;
 import br.com.cursoandroid.cadastroaluno.modelo.dao.AlunoDAO;
-import br.com.cursoandroid.cadastroaluno.suport.WebClient;
 import br.com.cursoandroid.cadastroaluno.task.EnviaAlunosTask;
 
 public class ListaAlunosActivity extends Activity {

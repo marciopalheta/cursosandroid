@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android=
+    	"http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- Continua -->
+    
+    <ImageView
+        android:id="@+id/itemFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/borda_imagem"
+        android:padding="5dp"
+        android:src="@drawable/ic_no_image" />
+
+    <TextView
+        android:id="@+id/itemNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/itemFoto"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+    
+    <!-- Continua -->
+
+    <TextView
+        android:id="@+id/itemTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+    
+    <TextView
+        android:id="@+id/itemEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/itemTelefone"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+</RelativeLayout>

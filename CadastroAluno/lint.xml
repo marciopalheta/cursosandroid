@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="ContentDescription">
+        <ignore path="res/layout-land/item.xml" />
         <ignore path="res/layout/item.xml" />
     </issue>
     <issue id="OldTargetApi">

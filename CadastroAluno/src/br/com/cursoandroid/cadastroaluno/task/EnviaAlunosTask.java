@@ -15,7 +15,7 @@ public class EnviaAlunosTask extends AsyncTask<Object, Object, String> {
 
 	//Servidor para teste JSON: http://www.jsontest.com/
 	//private final String url = "http://ip.jsontest.com/";
-	private final String url = "http://192.168.1.105:8080/AlunoWeb/receber-json";
+	private final String url = "http://192.168.43.215:8080/AlunoWeb/receber-json";
 
 	// Contexto (tela) para exibicao de mensagens
 	private Context context;
