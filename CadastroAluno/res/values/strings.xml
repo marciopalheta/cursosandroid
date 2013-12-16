@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!-- Nome da APP, usado pelo AndroidManifest -->
     <string name="app_name">MPAlunos</string>
-    
+
     <!-- Strings para itens do menu -->
     <string name="novo">Novo</string>
     <string name="mapa">Mapa</string>
@@ -11,11 +11,9 @@
     <string name="sincronizar">Sincronizar</string>
     <string name="provas">Provas</string>
     <string name="preferencias">Preferências</string>
-    
     <string name="action_settings">Settings</string>
     <string name="nome_aluno">Informe o nome do aluno</string>
     <string name="add_aluno">Adicionar aluno</string>
-    
     <string name="titulo_formulario">Dados do Aluno</string>
     <string name="foto_aluno">Foto do Aluno</string>
     <string name="nome">Nome</string>
@@ -29,12 +27,18 @@
     <string name="endereco_hint">Informe o endereço</string>
     <string name="nota">Nota</string>
     <string name="salvar_dados">Salvar Dados</string>
-    
     <string name="ligar">Ligar</string>
     <string name="enviarSMS">Enviar SMS</string>
     <string name="acharNoMapa">Achar no Mapa</string>
     <string name="navegarSite">Navegar no Site</string>
     <string name="enviarEmail">Enviar E-mail</string>
     <string name="deletar">Deletar</string>
+    <!-- Outras strings aqui... -->
     
+    <!-- Strings da tela de Detalhes da Prova -->
+    <string name="titulo_provas">Provas</string>
+    <string name="detalhes_prova">Detalhes da Prova</string>
+    <string name="materia">Matéria</string>
+    <string name="data">Data</string>
+
 </resources>

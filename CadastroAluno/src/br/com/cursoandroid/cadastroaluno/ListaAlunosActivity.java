@@ -152,12 +152,17 @@ public class ListaAlunosActivity extends Activity {
 					FormularioActivity.class);
 			startActivity(intent);
 			return false;
-		// Verifica se foi selecionado o item ENVIAR ALUNOS
+			// Verifica se foi selecionado o item ENVIAR ALUNOS
 		case R.id.menu_enviar_alunos:
-			
-			//Execucao de tarefa assincrona
+
+			// Execucao de tarefa assincrona
 			new EnviaAlunosTask(this).execute();
-			
+
+			return false;
+
+		case R.id.menu_receber_provas:
+			intent = new Intent(this, ProvasActivity.class);
+			startActivity(intent);
 			return false;
 		default:
 			return super.onOptionsItemSelected(item);

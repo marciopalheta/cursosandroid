@@ -7,6 +7,7 @@
     <issue id="OldTargetApi">
         <ignore path="AndroidManifest.xml" />
     </issue>
+    <issue id="Recycle" severity="ignore" />
     <issue id="UseCompoundDrawables">
         <ignore path="res/layout/item.xml" />
     </issue>

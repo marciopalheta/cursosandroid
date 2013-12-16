@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <!-- Cria linhas com bordas arredondads em tons de cinza -->
+    <stroke android:width="5dp" android:color="#6b6b6b"/>
+    <corners android:radius="15dp"/>
+    
+    <!-- Definicao da cor de fundo -->
+    <solid android:color="#e1e1e1"/>
+    
+    <!-- Definicao do espaco entre o conteudo e a borda -->
+	<padding android:left="15dp"  android:top="15dp"
+	    	 android:right="15dp" android:bottom="15dp"/>
+
+</shape>
